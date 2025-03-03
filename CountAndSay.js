@@ -1,34 +1,31 @@
-let n = 5;
-let output = '';
-for(var i=0;i<n;i++){
-    if(i<1)
-        output = '1';
-    else{
-        let res = '';
-        for(var j = 0; j<output.length;j++){
-            if(output.length < 2){
-                if(output[j] == 1)
-                    res += '11';
-                else if(output[j] == 2)
-                    res += '12';
-            } else{
-                if(output[j] == output[j+1] && output[j] == 1){
-                    res += '21';
-                    j++;
-                    
-                }
-                else if(output[j] == output[j+1] && output[j] == 2){
-                    res += '22';
-                    j++
-                }
-                else if(output[j] == 1)
-                    res += '11';
-                else if(output[j] == 2)
-                    res += '12';
+let n = 7, result = '1';
+
+if(n == 1){
+    console.log(result);
+} else {
+    for(var i=1; i<n; i++){
+        
+        let num = result[0];
+        let count = 1;
+        let output = '';
+        
+        for(var j = 1; j<= result.length; j++){
+            
+            if( num == result[j])
+                count++;
+            else if(j == result.length){
+                output += count + num; 
             }
+            else{
+                output += count + num; 
+                count = 1;
+                num = result[j];
+            }
+            
         }
-        if(res)
-            output = res;
+        result = output;
+        
     }
+    
+    console.log(result);
 }
-console.log(output);
